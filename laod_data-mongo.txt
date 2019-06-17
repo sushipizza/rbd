@@ -1,0 +1,5 @@
+mongoimport -d sbd -c Osoba --type csv --file Osoba.csv –headerline
+
+mongoimport -d sbd -c Adres --type csv --file Adres.csv –headerline
+
+mongoimport -d sbd -c AdresZameldowania --type csv --file AdresZameldowania.csv –headerline

@@ -1,0 +1,27 @@
+db.osoba.find();
+
+
+db.Osoba.aggregate( [ { "$match": { "PESEL": PESEL } }, 
+{ "$lookup": 
+	{ 
+		"from": "AdresZameldowania", 
+		"localField": "PESEL", 
+		"foreignField": "PESEL", 
+		"as": "adres" 
+	} 
+}, 
+{ "$project": 
+	{ 
+		"imie": 1, 
+		"nazwisko": 1, 
+		"data_zameldowania": "$adres.data_zameldowania"
+	} 
+}] )
+
+
+
+db.osoba.find(
+	{
+		"Nr_Budynku": {'$gt' : 10}
+	}
+).sort({ "Ulica" : -1 });
